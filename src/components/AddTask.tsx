@@ -1,27 +1,18 @@
-import {Button, Input} from "antd";
-import React, {useState} from "react";
+import { Button, Input } from "antd";
+import { useState } from "react";
+import { TaskAdd } from "../styles.ts";
+import {AddTasksProps} from "./AddTasksProps.ts";
 
-interface AddTaskProps {
-	tasks: string[],
-	setTasks: React.Dispatch<React.SetStateAction<string[]>>
-}
-
-function AddTask({tasks, setTasks}: AddTaskProps) {
-	const containerStyle = {
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
-	};
-
+function AddTask({tasks, setTasks}: AddTasksProps) {
 	const [taskInput, setTaskInput] = useState('')
 
 	const addTask = () => {
-		if(tasks) setTasks([...tasks, taskInput])
+		setTasks([...tasks, taskInput])
 		setTaskInput('')
 	}
 
 	return (
-		<div style={containerStyle}>
+		<TaskAdd>
 			<Input
 					type="text"
 					placeholder="Write your task"
@@ -29,7 +20,7 @@ function AddTask({tasks, setTasks}: AddTaskProps) {
 					onChange={(e) => setTaskInput(e.target.value)}
 			/>
 			<Button onClick={addTask}>Add</Button>
-		</div>
+		</TaskAdd>
 	)
 }
 

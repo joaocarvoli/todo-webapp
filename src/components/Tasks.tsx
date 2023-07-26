@@ -1,15 +1,26 @@
-interface ShowTasksProps {
-	tasks: string[]
-}
+import Task from "./Task.tsx";
+import { AddTasksProps } from "./AddTasksProps.ts";
+import { useState, useEffect } from "react";
 
-function Tasks({tasks}: ShowTasksProps) {
+function Tasks({tasks, setTasks}: AddTasksProps) {
+	const [taskIdToRemove, setTaskIdToRemove] = useState(-1)
+
+	useEffect(() => {
+		if(taskIdToRemove != -1){
+			console.log("task selected: " + taskIdToRemove)
+			console.log(tasks[taskIdToRemove])
+			console.log(tasks.splice(taskIdToRemove, taskIdToRemove))
+			setTasks(tasks)
+		}
+	}, [taskIdToRemove]);
+
 	return (
 		<div>
 			{
 				tasks.map((task, index) => {
 					return (
 							<div key={index}>
-								<p>{task}</p>
+								<Task task={task} index={index} setTaskIdToRemove={setTaskIdToRemove}/>
 							</div>
 					)
 				})
