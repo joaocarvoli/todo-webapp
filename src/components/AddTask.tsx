@@ -2,12 +2,18 @@ import { Button, Input } from "antd";
 import { useState } from "react";
 import { TaskAdd } from "../styles.ts";
 import {AddTasksProps} from "./AddTasksProps.ts";
+import { TaskModel } from "../models/TaskModel.ts"
 
 function AddTask({tasks, setTasks}: AddTasksProps) {
 	const [taskInput, setTaskInput] = useState('')
 
 	const addTask = () => {
-		setTasks([...tasks, taskInput])
+		const newTask: TaskModel = {
+			title: taskInput,
+			description: "Set description"
+		}
+
+		setTasks([...tasks, newTask])
 		setTaskInput('')
 	}
 

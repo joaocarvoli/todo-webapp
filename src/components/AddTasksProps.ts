@@ -1,6 +1,7 @@
 import React from "react";
+import { TaskModel } from "../models/TaskModel.ts"
 
 export interface AddTasksProps {
-  tasks: string[],
-  setTasks: React.Dispatch<React.SetStateAction<string[]>>
+  tasks: TaskModel[],
+  setTasks: React.Dispatch<React.SetStateAction<TaskModel[]>>
 }
