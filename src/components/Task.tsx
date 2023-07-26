@@ -1,6 +1,6 @@
-import {DeleteOutlined, EditOutlined} from "@ant-design/icons";
-import React from "react";
-import { Card } from 'antd';
+import {DeleteOutlined} from "@ant-design/icons";
+import React, {useState} from "react";
+import {Card, Input} from 'antd';
 import { TaskModel } from "../models/TaskModel.ts";
 
 interface AddTaskProps {
@@ -10,25 +10,21 @@ interface AddTaskProps {
 }
 
 function Task({task, index, setTaskIdToRemove}: AddTaskProps) {
-	const style = {
-		//color: isHovered ? '#ff6666' : '#000000'
-	}
+	const [taskDescription, setTaskDescription] = useState(task.description)
 
 	const deleteTask = () => {
 		setTaskIdToRemove(index)
 	}
-
 		return (
 			<>
 				<Card
 					title={task.title}
 					style={{ width: 300, marginTop: 16 }}
 					actions={[
-						<EditOutlined/>,
-						<DeleteOutlined style={style} onClick={deleteTask}/>
+						<DeleteOutlined onClick={deleteTask}/>
 					]}
 				>
-					{task.description}
+					<Input placeholder={taskDescription} onChange={(e) => setTaskDescription(e.target.value)}></Input>
 				</Card>
 			</>
 		);

@@ -29,8 +29,7 @@ export const TaskAdd = styled.div`
 
 export const TodoBox = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  align-items: start;
   justify-content: center;
-  height: 100vh;    
+  position: relative;
 `;

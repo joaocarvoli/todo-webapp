@@ -10,7 +10,7 @@ function App() {
 
   return (
     <TodoBox>
-      <Card title="Todo list">
+      <Card title="TODO List">
         <AddTask tasks={tasks} setTasks={setTasks}/>
         <Tasks tasks={tasks} setTasks={setTasks}/>
       </Card>
